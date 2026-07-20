@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pial Ahmed Shosi - Portfolio</title>
     
-    <!-- FIXED GOOGLE FONTS IMPORT SYNTAX (Using @ instead of = for weights) -->
+    <!-- GOOGLE FONTS IMPORT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-          /* --- 1. THE ANIMATED BACKGROUND --- */
+        /* --- 1. THE ANIMATED BACKGROUND --- */
         @keyframes colorChange {
             0%   { background-color: lightyellow; } 
             15%  { background-color: lightcoral; } 
@@ -58,7 +58,7 @@
             box-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
         }
 
-        /* --- 4. NAVIGATION BAR (Matches Screenshot Layout) --- */
+        /* --- 4. NAVIGATION BAR --- */
         nav {
             position: fixed;
             top: 0;
@@ -109,7 +109,6 @@
             position: relative;
         }
 
-        /* Desktop view: Hide icons to preserve the clean text layout seen in your image */
         .nav-links a i {
             display: none; 
         }
@@ -118,7 +117,6 @@
             color: #737dfe;
         }
 
-        /* Custom bottom indicator line matching the reference image */
         .nav-links a.active {
             color: #737dfe;
         }
@@ -135,7 +133,7 @@
         }
 
         /* --- 5. MAIN CONTAINER --- */
-         .main-container {
+        .main-container {
             max-width: 900px; 
             margin: 100px auto 50px auto; 
             padding: 0 20px;
@@ -164,7 +162,7 @@
 
         .hero h1 {
             font-size: 2.8em;
-            font-weight: 700; /* Bold, punchy look */
+            font-weight: 700;
             color: #111111;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
@@ -189,7 +187,7 @@
         .btn {
             display: inline-block;
             padding: 12px 32px;
-            background: linear-gradient(135deg, #737dfe, #9472ff); /* Smooth modern periwinkle gradient */
+            background: linear-gradient(135deg, #737dfe, #9472ff);
             color: white;
             border-radius: 50px;
             text-decoration: none;
@@ -298,16 +296,29 @@
             margin-bottom: 0;
         }
 
+        /* FIX 1: Prevents long titles from overflowing mobile cards */
         .card-title {
             margin-bottom: 6px; 
             color: #0056b3;
             font-weight: 600;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
         }
 
         .card-desc {
             margin-bottom: 15px;
             color: #444444;
             font-size: 0.95em;
+        }
+
+        /* FIX 2: Contact Button Flex Container with Gap */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-top: 15px;
         }
 
         /* --- 10. EDUCATION --- */
@@ -377,8 +388,11 @@
             padding-top: 80px;
         }
 
-        /* --- 14. NAVBAR MOBILE ADAPTATION RESPONSIVENESS --- */
+        /* --- 14. MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            .glass-panel {
+                padding: 30px 20px;
+            }
             .nav-container {
                 padding: 12px 16px;
             }
@@ -413,12 +427,19 @@
                 width: 100%;
                 justify-content: center;
             }
+            .contact-links {
+                justify-content: center;
+            }
+            .contact-links .btn {
+                flex: 1 1 130px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- MODERN RESPONSIVE FLEXBOX NAVIGATION -->
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
             <a href="#home" class="nav-logo">Pial Ahmed.</a>
@@ -449,10 +470,10 @@
 
             <!-- RESUME HUB -->
             <div class="resume-action-container">
-                <a href="Resume.pdf" target="_blank" class="btn-resume btn-resume-view">
+                <a href="resume.pdf" target="_blank" class="btn-resume btn-resume-view">
                     <i class="far fa-file-alt"></i> View Resume
                 </a>
-                <a href="Resume.pdf" download="Pial_Ahmed_Shosi_Resume.pdf" class="btn-resume btn-resume-download">
+                <a href="resume.pdf" download="resume.pdf" class="btn-resume btn-resume-download">
                     <i class="fas fa-arrow-down"></i> Download Resume
                 </a>
             </div>
@@ -498,14 +519,14 @@
             </div>
 
             <div class="project-card">
-                <h3 class="card-title">Totoo_Services🤝(Django,Python,HTML,CSS,JavaScript)</h3>
+                <h3 class="card-title">Totoo_Services🤝(Django,Python,HTML,CSS)</h3>
                 <p class="card-desc">Smart Service Marketplace Platform. Where authentic talent meets community demand in real-time. The modern ecosystem for secure, on-demand local help.</p>
                 <a href="https://github.com/23201162-ui/Totoo_Services-" target="_blank" class="btn btn-sm">View Code on GitHub</a>
             </div>
         </section>
 
         <!-- ACHIEVEMENTS SECTION -->
-         <section id="achievements" class="glass-panel">
+        <section id="achievements" class="glass-panel">
             <h2>🏆 Achievements & Certificates</h2>
             <div class="achievement-card">
                 <h3 class="card-title">সহজ ভাষায় C programming</h3>
@@ -513,7 +534,6 @@
                 <img class="cert-img" src="6b6d3769-57dc-49f3-9cd5-f16fc4f8e2cf.jpg" alt="10 Minute School C Programming Certificate">
             </div>
         </section>
-
 
         <!-- EDUCATION SECTION -->
         <section id="education" class="glass-panel">
@@ -538,7 +558,7 @@
         <section id="contact" class="glass-panel">
             <h2>📞 Get In Touch</h2>
             <p class="card-desc">I'm currently looking for new opportunities and collaborations. Feel free to reach out across any of these platforms!</p>
-            <div>
+            <div class="contact-links">
                 <a href="https://www.linkedin.com/in/pial-ahmed-shosi-618a96316?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn">LinkedIn</a> 
                 <a href="https://www.facebook.com/share/1FtoZJgEui/" target="_blank" class="btn">Facebook</a>
                 <a href="https://github.com/23201162-ui" target="_blank" class="btn">GitHub</a> 
@@ -548,7 +568,7 @@
 
     </div>
 
-    <!-- SCRIPTS --- SCROLL MONITOR ENGINE -->
+    <!-- SCROLL MONITOR ENGINE -->
     <script>
         const sections = document.querySelectorAll("header, section");
         const navLinks = document.querySelectorAll(".nav-links a");
