@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-        /* --- 1. THE ANIMATED BACKGROUND --- */
+        /* --- 1. ANIMATED BACKGROUND --- */
         @keyframes colorChange {
             0%   { background-color: lightyellow; } 
             15%  { background-color: lightcoral; } 
@@ -20,7 +20,7 @@
             100% { background-color: lightyellow; }
         }
 
-        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
+        /* --- 2. GLOBAL RESET --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -40,7 +40,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- 3. REUSABLE GLASSMORPHISM STYLES --- */
+        /* --- 3. GLASSMORPHISM PANELS --- */
         .glass-panel {
             background: rgba(255, 255, 255, 0.45); 
             backdrop-filter: blur(20px); 
@@ -63,7 +63,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 1000; 
@@ -81,10 +81,11 @@
 
         .nav-logo {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.4em; 
+            font-size: 2.2em; 
             font-weight: 500;
             color: #1a1a1a;
             text-decoration: none;
+            white-space: nowrap; /* Prevents "Pial Ahmed." from breaking onto two lines */
             transition: color 0.3s ease;
         }
 
@@ -94,7 +95,7 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
         }
 
         .nav-links a {
@@ -113,11 +114,7 @@
             display: none; 
         }
 
-        .nav-links a:hover {
-            color: #737dfe;
-        }
-
-        .nav-links a.active {
+        .nav-links a:hover, .nav-links a.active {
             color: #737dfe;
         }
         
@@ -185,8 +182,10 @@
 
         /* --- 7. BUTTONS & PILLS --- */
         .btn {
-            display: inline-block;
-            padding: 12px 32px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 28px;
             background: linear-gradient(135deg, #737dfe, #9472ff);
             color: white;
             border-radius: 50px;
@@ -219,7 +218,7 @@
             border-radius: 8px;
         }
 
-        /* --- 7.1 RESUME HUB --- */
+        /* --- RESUME HUB --- */
         .resume-action-container {
             margin-top: 20px;
             display: inline-flex;
@@ -291,19 +290,13 @@
             border-radius: 12px; 
             margin-bottom: 15px;
         }
-        
-        .project-card:last-child {
-            margin-bottom: 0;
-        }
 
-        /* FIX 1: Prevents long titles from overflowing mobile cards */
         .card-title {
             margin-bottom: 6px; 
             color: #0056b3;
             font-weight: 600;
             overflow-wrap: break-word;
             word-break: break-word;
-            hyphens: auto;
         }
 
         .card-desc {
@@ -312,13 +305,17 @@
             font-size: 0.95em;
         }
 
-        /* FIX 2: Contact Button Flex Container with Gap */
+        /* CONTACT BUTTONS CONTAINER - OVERLAP FIX */
         .contact-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
             align-items: center;
-            margin-top: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-links .btn {
+            margin: 4px 0; /* Ensures buttons NEVER overlap vertically */
         }
 
         /* --- 10. EDUCATION --- */
@@ -353,7 +350,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        /* --- 11. SECTION HEADERS --- */
+        /* --- 11. HEADERS & CERTIFICATES --- */
         h2 {
             font-size: 1.8em;
             font-weight: 700;
@@ -366,8 +363,7 @@
             gap: 12px;
         }
 
-        /* --- 12. CERTIFICATE IMAGES --- */
-        .cert-img {
+       .cert-img {
             width: auto; 
             max-width: 220px; 
             height: auto; 
@@ -378,39 +374,37 @@
             border: 2px solid rgba(255, 255, 255, 0.8);
             transition: transform 0.3s ease;
         }
-
-        .cert-img:hover {
+         .cert-img:hover {
             transform: scale(1.03); 
         }
 
-        /* --- 13. POSITION CALIBRATION --- */
         #education, #contact {
             padding-top: 80px;
         }
 
-        /* --- 14. MOBILE RESPONSIVENESS --- */
+        /* --- 12. MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .glass-panel {
                 padding: 30px 20px;
             }
             .nav-container {
-                padding: 12px 16px;
+                padding: 10px 14px;
             }
             .nav-logo {
-                font-size: 2.1em; 
+                font-size: 1.5em; /* Smaller logo on phone screen */
             }
             .nav-links {
-                gap: 14px;
+                gap: 8px; /* Tighter nav icons for small mobile screens */
             }
             .nav-links a span {
                 display: none; 
             }
             .nav-links a i {
                 display: inline-block; 
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
             .nav-links a {
-                padding: 6px;
+                padding: 4px;
             }
             .nav-links a.active::after {
                 display: none;
@@ -473,7 +467,7 @@
                 <a href="resume.pdf" target="_blank" class="btn-resume btn-resume-view">
                     <i class="far fa-file-alt"></i> View Resume
                 </a>
-                <a href="resume.pdf" download="resume.pdf" class="btn-resume btn-resume-download">
+                <a href="resume.pdf" download="Pial_Ahmed_Shosi_Resume.pdf" class="btn-resume btn-resume-download">
                     <i class="fas fa-arrow-down"></i> Download Resume
                 </a>
             </div>
@@ -525,8 +519,8 @@
             </div>
         </section>
 
-        <!-- ACHIEVEMENTS SECTION -->
-        <section id="achievements" class="glass-panel">
+       <!-- ACHIEVEMENTS SECTION -->
+         <section id="achievements" class="glass-panel">
             <h2>🏆 Achievements & Certificates</h2>
             <div class="achievement-card">
                 <h3 class="card-title">সহজ ভাষায় C programming</h3>
@@ -561,7 +555,7 @@
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/pial-ahmed-shosi-618a96316?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn">LinkedIn</a> 
                 <a href="https://www.facebook.com/share/1FtoZJgEui/" target="_blank" class="btn">Facebook</a>
-                <a href="https://github.com/23201162-ui" target="_blank" class="btn">GitHub</a> 
+                <a href="https://github.com/Pial-Ahmed-Shosi" target="_blank" class="btn">GitHub</a> 
                 <a href="mailto:pa930310@gmail.com" class="btn">Email Me</a> 
             </div>
         </section>
