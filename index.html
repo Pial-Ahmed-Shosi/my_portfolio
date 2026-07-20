@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pial Ahmed Shosi - Portfolio</title>
+    
+    <!-- FIXED GOOGLE FONTS IMPORT SYNTAX (Using @ instead of = for weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+          /* --- 1. THE ANIMATED BACKGROUND --- */
+        @keyframes colorChange {
+            0%   { background-color: lightyellow; } 
+            15%  { background-color: lightcoral; } 
+            20%  { background-color: plum; }      
+            45%  { background-color: lightskyblue; }
+            70%  { background-color: mediumaquamarine; }
+            100% { background-color: lightyellow; }
+        }
+
+        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; 
+            color: #2c3e50; 
+            animation: colorChange 20s infinite ease-in-out; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- 3. REUSABLE GLASSMORPHISM STYLES --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px; 
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04); 
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- 4. NAVIGATION BAR (Matches Screenshot Layout) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+
+        .nav-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.4em; 
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: #737dfe;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #333333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            padding: 8px 2px;
+            position: relative;
+        }
+
+        /* Desktop view: Hide icons to preserve the clean text layout seen in your image */
+        .nav-links a i {
+            display: none; 
+        }
+
+        .nav-links a:hover {
+            color: #737dfe;
+        }
+
+        /* Custom bottom indicator line matching the reference image */
+        .nav-links a.active {
+            color: #737dfe;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #737dfe;
+            border-radius: 2px;
+        }
+
+        /* --- 5. MAIN CONTAINER --- */
+         .main-container {
+            max-width: 900px; 
+            margin: 100px auto 50px auto; 
+            padding: 0 20px;
+        }
+
+        /* --- 6. HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .profile-pic {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 50%; 
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.04);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            font-weight: 700; /* Bold, punchy look */
+            color: #111111;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15em;
+            font-weight: 400;
+            color: #555555;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* --- 7. BUTTONS & PILLS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #737dfe, #9472ff); /* Smooth modern periwinkle gradient */
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            box-shadow: 0 4px 18px rgba(115, 125, 254, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(115, 125, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background: #ffffff; 
+            color: #333333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-secondary:hover {
+            background: #fafafa;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-sm {
+            padding: 8px 18px; 
+            font-size: 0.85em;
+            border-radius: 8px;
+        }
+
+        /* --- 7.1 RESUME HUB --- */
+        .resume-action-container {
+            margin-top: 20px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-resume-view {
+            background: rgba(255, 255, 255, 0.7);
+            color: #4a00e0;
+            border: 1px solid rgba(115, 125, 254, 0.3);
+        }
+
+        .btn-resume-view:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .btn-resume-download {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            color: white;
+        }
+
+        .btn-resume-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 0, 224, 0.3);
+        }
+
+        /* --- 8. SKILLS GRID --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #234280;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- 9. PROJECTS & CARDS --- */
+        .project-card, .achievement-card {
+            background: rgba(255, 255, 255, 0.6); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px;
+        }
+        
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-title {
+            margin-bottom: 6px; 
+            color: #0056b3;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            margin-bottom: 15px;
+            color: #444444;
+            font-size: 0.95em;
+        }
+
+        /* --- 10. EDUCATION --- */
+        .edu-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 24px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .edu-item {
+            text-decoration: none;
+            color: #222222;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .edu-item:hover {
+            transform: translateY(-4px);
+            color: #737dfe;
+        }
+
+        .edu-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* --- 11. SECTION HEADERS --- */
+        h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #111111;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* --- 12. CERTIFICATE IMAGES --- */
+        .cert-img {
+            width: auto; 
+            max-width: 220px; 
+            height: auto; 
+            border-radius: 8px; 
+            margin: 15px auto 0 auto; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: block; 
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-img:hover {
+            transform: scale(1.03); 
+        }
+
+        /* --- 13. POSITION CALIBRATION --- */
+        #education, #contact {
+            padding-top: 80px;
+        }
+
+        /* --- 14. NAVBAR MOBILE ADAPTATION RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 12px 16px;
+            }
+            .nav-logo {
+                font-size: 2.1em; 
+            }
+            .nav-links {
+                gap: 14px;
+            }
+            .nav-links a span {
+                display: none; 
+            }
+            .nav-links a i {
+                display: inline-block; 
+                font-size: 1.3em;
+            }
+            .nav-links a {
+                padding: 6px;
+            }
+            .nav-links a.active::after {
+                display: none;
+            }
+            .nav-links a.active i {
+                color: #737dfe;
+            }
+            .resume-action-container {
+                flex-direction: column;
+                width: 100%;
+                border-radius: 20px;
+            }
+            .btn-resume {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MODERN RESPONSIVE FLEXBOX NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Pial Ahmed.</a>
+            <div class="nav-links">
+                <a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="#about"><i class="fas fa-user"></i><span>About</span></a>
+                <a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
+                <a href="#projects"><i class="fas fa-briefcase"></i><span>Projects</span></a>
+                <a href="#achievements"><i class="fas fa-award"></i><span>Achievements</span></a> 
+                <a href="#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+                <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <!-- HERO SECTION -->
+        <header id="home" class="glass-panel hero">
+            <img class="profile-pic" src="15f207b6-e4ff-4b96-a701-d521311d676e.jpg" alt="Pial Ahmed Shosi Profile Picture">
+            <h1>Hi! I'm Pial Ahmed Shosi</h1>
+            <p>Computer Science & Engineering Student at UAP</p>
+            
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#projects" class="btn btn-secondary">View Work</a>
+            </div>
+
+            <!-- RESUME HUB -->
+            <div class="resume-action-container">
+                <a href="Resume.pdf" target="_blank" class="btn-resume btn-resume-view">
+                    <i class="far fa-file-alt"></i> View Resume
+                </a>
+                <a href="Resume.pdf" download="Pial_Ahmed_Shosi_Resume.pdf" class="btn-resume btn-resume-download">
+                    <i class="fas fa-arrow-down"></i> Download Resume
+                </a>
+            </div>
+        </header>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="glass-panel">
+            <h2>🧑‍💻 About Me</h2>
+            <p>I am a Computer Science student passionate about building clean and efficient software. I enjoy solving complex problems through structured thinking and code. I continuously refine my skills through hands-on projects and learning. Focused, adaptable, and driven — I aim to grow with every challenge I take on.</p>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="glass-panel">
+            <h2>🛠️ Skills & Technologies</h2>
+            <div class="skills-grid">
+                <span class="skill-pill">C</span>
+                <span class="skill-pill">C++</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">JAVA</span>
+                <span class="skill-pill">PYTHON</span>
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">Django</span>
+                <span class="skill-pill">Competitive Programming</span>
+                <span class="skill-pill">Microsoft Office</span>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="glass-panel">
+            <h2>🚀 Projects</h2>
+            
+            <div class="project-card">
+                <h3 class="card-title">Air_Track System (SQL)</h3>
+                <p class="card-desc">A structured airline management database system built using SQL to efficiently manage flights, passengers, bookings, and scheduling with optimized relational queries. ✈️</p>
+                <a href="https://github.com/23201162-ui/Air_Track-System-" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="card-title">Basic-Bank Management System (JAVA)</h3>
+                <p class="card-desc">A basic Bank Management System developed in Java that supports account creation, secure login authentication, deposits, withdrawals, transfers, loan requests, and interest calculation with file handling for data persistence.🏦</p>
+                <a href="https://github.com/23201162-ui/-Bank-Management-System" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="card-title">Totoo_Services🤝(Django,Python,HTML,CSS,JavaScript)</h3>
+                <p class="card-desc">Smart Service Marketplace Platform. Where authentic talent meets community demand in real-time. The modern ecosystem for secure, on-demand local help.</p>
+                <a href="https://github.com/23201162-ui/Totoo_Services-" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS SECTION -->
+         <section id="achievements" class="glass-panel">
+            <h2>🏆 Achievements & Certificates</h2>
+            <div class="achievement-card">
+                <h3 class="card-title">সহজ ভাষায় C programming</h3>
+                <p>My first programming language journey began with C Programming, where I built a strong foundation in problem-solving and core programming concepts through a certified course from 10 Minute School.</p>
+                <img class="cert-img" src="6b6d3769-57dc-49f3-9cd5-f16fc4f8e2cf.jpg" alt="10 Minute School C Programming Certificate">
+            </div>
+        </section>
+
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="glass-panel">
+            <h2>🎓 Education</h2>
+            <div class="edu-container">
+                <a class="edu-item" href="https://www.abdurroufcollege.ac.bd/" target="_blank">
+                    <img class="edu-logo" src="1689559285BMARPC.jpeg" alt="BMARPC School Logo"><br>
+                    School (BMARPC)
+                </a>
+                <a class="edu-item" href="https://www.abdurroufcollege.ac.bd/" target="_blank">
+                    <img class="edu-logo" src="1689559285BMARPC.jpeg" alt="BMARPC College Logo"><br>
+                    College (BMARPC)
+                </a>
+                <a class="edu-item" href="https://www.uap-bd.edu/" target="_blank">
+                    <img class="edu-logo" src="download.jpg" alt="University of Asia Pacific Logo"><br>
+                    University (UAP)
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="glass-panel">
+            <h2>📞 Get In Touch</h2>
+            <p class="card-desc">I'm currently looking for new opportunities and collaborations. Feel free to reach out across any of these platforms!</p>
+            <div>
+                <a href="https://www.linkedin.com/in/pial-ahmed-shosi-618a96316?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn">LinkedIn</a> 
+                <a href="https://www.facebook.com/share/1FtoZJgEui/" target="_blank" class="btn">Facebook</a>
+                <a href="https://github.com/23201162-ui" target="_blank" class="btn">GitHub</a> 
+                <a href="mailto:pa930310@gmail.com" class="btn">Email Me</a> 
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SCRIPTS --- SCROLL MONITOR ENGINE -->
+    <script>
+        const sections = document.querySelectorAll("header, section");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        window.addEventListener("scroll", () => {
+            let currentSectionId = "";
+            
+            if (window.scrollY < 50) {
+                currentSectionId = "home";
+            } 
+            else if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 25) {
+                currentSectionId = "contact";
+            } 
+            else {
+                sections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 280 && rect.bottom >= 150) {
+                        currentSectionId = section.getAttribute("id");
+                    }
+                });
+            }
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSectionId}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

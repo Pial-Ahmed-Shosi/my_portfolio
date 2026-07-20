@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pial Ahmed Shosi - Portfolio</title>
+    
+    <!-- Google Fonts (Poppins for text, Great Vibes for the signature logo) & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* --- 1. THE ANIMATED BACKGROUND --- */
+        @keyframes colorChange {
+            0%   { background-color: lightyellow; } 
+            15%  { background-color: lightcoral; } 
+            20%  { background-color: plum; }      
+            45%  { background-color: lightskyblue; }
+            70%  { background-color: mediumaquamarine; }
+            100% { background-color: lightyellow; }
+        }
+
+        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; 
+            color: #2d2929; 
+            animation: colorChange 15s infinite ease-in-out; 
+            line-height: 1.7;
+        }
+
+        /* --- 3. REUSABLE GLASSMORPHISM STYLES --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        /* --- 4. MODERN RESPONSIVE NAVIGATION BAR WITH SIGNATURE LOGO --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px; /* Reduced vertical padding slightly to balance cursive height */
+        }
+
+        /* Stylish Signature Logo Settings */
+        .nav-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.3em; /* Larger scale since cursive script fonts run thinner */
+            font-weight: 500;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: inline-block;
+            transform: translateY(-2px); /* Perfectly aligns the baseline with standard menu buttons */
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: #6e8efb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        /* Hide icons on desktop view to keep layout text-clean */
+        .nav-links a i {
+            display: none; 
+            font-size: 1.1em;
+        }
+
+        .nav-links a:hover {
+            color: #6e8efb;
+        }
+
+        /* Highlight state for current active scroll container */
+        .nav-links a.active {
+            color: #6e8efb;
+            border-bottom: 2px solid #6e8efb;
+        }
+
+        /* --- 5. MAIN CONTAINER & LAYOUT --- */
+        .main-container {
+            max-width: 900px; 
+            margin: 100px auto 50px auto; 
+            padding: 0 20px;
+        }
+
+        /* --- 6. HERO SECTION (Header) --- */
+        .hero {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%; 
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            margin-top: 20px;
+        }
+
+        /* --- 7. BUTTONS & PILLS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(167, 119, 227, 0.4);
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(167, 119, 227, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8); 
+            color: #333;
+        }
+
+        .btn-sm {
+            padding: 8px 16px; 
+            font-size: 0.9em;
+        }
+
+        /* --- 8. SKILLS GRID --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #0056b3;
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* --- 9. PROJECTS & CARDS --- */
+        .project-card, .achievement-card {
+            background: rgba(255, 255, 255, 0.6); 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px;
+        }
+        
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-title {
+            margin-bottom: 5px; 
+            color: #0056b3;
+        }
+
+        .card-desc {
+            margin-bottom: 15px;
+        }
+
+        /* --- 10. EDUCATION ALIGNMENT --- */
+        .edu-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .edu-item {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .edu-item:hover {
+            transform: translateY(-5px);
+            color: #6e8efb;
+        }
+
+        .edu-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- 11. SECTION HEADERS --- */
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- 12. CERTIFICATE IMAGES --- */
+        .cert-img {
+            width: auto; 
+            max-width: 220px; 
+            height: auto; 
+            border-radius: 8px; 
+            margin: 15px auto 0 auto; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: block; 
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-img:hover {
+            transform: scale(1.05); 
+        }
+
+        /* --- 13. TAILORED PANEL SPACING FOR TRACKING CALIBRATION --- */
+        #education, #contact {
+            padding-top: 60px;
+            padding-bottom: 50px;
+        }
+
+        /* --- 14. NAVBAR MOBILE ADAPTATION RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 10px 15px;
+            }
+            .nav-logo {
+                font-size: 2.0em; /* Retains nice visibility on mobile screens */
+            }
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a span {
+                display: none; /* Hide wide text strings */
+            }
+            .nav-links a i {
+                display: inline-block; /* Show standard interface symbols */
+                font-size: 1.25em;
+            }
+            .nav-links a {
+                border-bottom: none;
+                padding: 6px;
+            }
+            .nav-links a.active i {
+                color: #6e8efb;
+                transform: scale(1.15);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- MODERN RESPONSIVE FLEXBOX NAVIGATION WITH STYLISH SIGNATURE LOGO -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Pial Ahmed.</a>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="#about"><i class="fas fa-user"></i><span>About</span></a>
+                <a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
+                <a href="#projects"><i class="fas fa-briefcase"></i><span>Projects</span></a>
+                <a href="#achievements"><i class="fas fa-award"></i><span>Achievements</span></a> 
+                <a href="#education"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+                <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <header id="home" class="glass-panel hero">
+            <img class="profile-pic" src="15f207b6-e4ff-4b96-a701-d521311d676e.jpg" alt="Pial Ahmed Shosi Profile Picture">
+            <h1>Hi! I'm Pial Ahmed Shosi</h1>
+            <p>Computer Science & Engineering Student at UAP</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#projects" class="btn btn-secondary">View Work</a>
+            </div>
+        </header>
+
+        <section id="about" class="glass-panel">
+            <h2>🧑‍💻 About Me</h2>
+            <p>I am a Computer Science student passionate about building clean and efficient software. I enjoy solving complex problems through structured thinking and code. I continuously refine my skills through hands-on projects and learning. Focused, adaptable, and driven — I aim to grow with every challenge I take on.</p>
+        </section>
+
+        <section id="skills" class="glass-panel">
+            <h2>🛠️ Skills & Technologies</h2>
+            <div class="skills-grid">
+                <span class="skill-pill">C</span>
+                <span class="skill-pill">C++</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">JAVA</span>
+                <span class="skill-pill">PYTHON</span>
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">Django</span>
+                <span class="skill-pill">Competitive Programming</span>
+                <span class="skill-pill">Microsoft Office</span>
+            </div>
+        </section>
+
+        <section id="projects" class="glass-panel">
+            <h2>🚀 Projects</h2>
+            
+            <div class="project-card">
+                <h3 class="card-title">Air_Track System (SQL)</h3>
+                <p class="card-desc">A structured airline management database system built using SQL to efficiently manage flights, passengers, bookings, and scheduling with optimized relational queries. ✈️</p>
+                <a href="https://github.com/23201162-ui/Air_Track-System-" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="card-title">Basic-Bank Management System (JAVA)</h3>
+                <p class="card-desc">A basic Bank Management System developed in Java that supports account creation, secure login authentication, deposits, withdrawals, transfers, loan requests, and interest calculation with file handling for data persistence.🏦</p>
+                <a href="https://github.com/23201162-ui/-Bank-Management-System" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+
+             <div class="project-card">
+                <h3 class="card-title">Totoo_Services🤝(Django,Python,HTML,CSS,JavaScript)</h3>
+                <p class="card-desc">Smart Service Marketplace Platform.Where authentic talent meets community demand in real-time.The modern ecosystem for secure, on-demand local help.</p>
+                <a href="https://github.com/23201162-ui/Totoo_Services-" target="_blank" class="btn btn-sm">View Code on GitHub</a>
+            </div>
+        </section>
+
+        <section id="achievements" class="glass-panel">
+            <h2>🏆 Achievements & Certificates</h2>
+            <div class="achievement-card">
+                <h3 class="card-title">সহজ ভাষায় C programming</h3>
+                <p>My first programming language journey began with C Programming, where I built a strong foundation in problem-solving and core programming concepts through a certified course from 10 Minute School.</p>
+                <img class="cert-img" src="6b6d3769-57dc-49f3-9cd5-f16fc4f8e2cf.jpg" alt="10 Minute School C Programming Certificate">
+            </div>
+        </section>
+
+        <section id="education" class="glass-panel">
+            <h2>🎓 Education</h2>
+            <div class="edu-container">
+                <a class="edu-item" href="https://www.abdurroufcollege.ac.bd/" target="_blank">
+                    <img class="edu-logo" src="1689559285BMARPC.jpeg" alt="BMARPC School Logo"><br>
+                    School (BMARPC)
+                </a>
+                <a class="edu-item" href="https://www.abdurroufcollege.ac.bd/" target="_blank">
+                    <img class="edu-logo" src="1689559285BMARPC.jpeg" alt="BMARPC College Logo"><br>
+                    College (BMARPC)
+                </a>
+                <a class="edu-item" href="https://www.uap-bd.edu/" target="_blank">
+                    <img class="edu-logo" src="download.jpg" alt="University of Asia Pacific Logo"><br>
+                    University (UAP)
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="glass-panel">
+            <h2>📞 Get In Touch</h2>
+            <p class="card-desc">I'm currently looking for new opportunities and collaborations. Feel free to reach out across any of these platforms!</p>
+            <div>
+                <a href="https://www.linkedin.com/in/pial-ahmed-shosi-618a96316?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn">LinkedIn</a> 
+                <a href="https://www.facebook.com/share/1FtoZJgEui/" target="_blank" class="btn">Facebook</a>
+                <a href="https://github.com/23201162-ui" target="_blank" class="btn">GitHub</a> 
+                <a href="mailto:pa930310@gmail.com" class="btn">Email Me</a> 
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SCRIPTS --- SCROLL MONITOR ENGINE -->
+    <script>
+        const sections = document.querySelectorAll("header, section");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        window.addEventListener("scroll", () => {
+            let currentSectionId = "";
+            
+            // 1. If at the very top, lock to Home
+            if (window.scrollY < 50) {
+                currentSectionId = "home";
+            } 
+            // 2. If at the absolute bottom of the page, lock to Contact
+            else if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 25) {
+                currentSectionId = "contact";
+            } 
+            // 3. For everything else (including Education), evaluate positions dynamically
+            else {
+                sections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 280 && rect.bottom >= 150) {
+                        currentSectionId = section.getAttribute("id");
+                    }
+                });
+            }
+
+            // 4. Update Navbar Active Class
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSectionId}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
